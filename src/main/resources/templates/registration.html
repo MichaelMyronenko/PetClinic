@@ -24,12 +24,13 @@
             </p>
             <p>
                 <label for="i-am-doctor">I am a Doctor</label>
-                <input type="checkbox" th:name="i-am-doctor" id="i-am-doctor" class="i-am-doctor"/>&nbsp;
+                <input type="checkbox" name="iAmDoctor" id="i-am-doctor" class="i-am-doctor"  th:checked="${iAmDoctor}"/>&nbsp;
             </p>
             <p>
                 <input type="submit" value="Sign up" class="btn btn-primary"/>
             </p>
             <p th:text="${invalidCredentials}" class="alert-danger"></p>
+            <p th:text="${usernameError}" class="alert-danger"></p>
         </div>
     </form>
 </div>
