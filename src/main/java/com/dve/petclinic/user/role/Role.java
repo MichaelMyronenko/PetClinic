@@ -1,7 +1,8 @@
 package com.dve.petclinic.user.role;
 
-public enum Role {
-    USER,
-    ADMIN,
-    DOCTOR
+import org.springframework.security.core.GrantedAuthority;
+
+public interface Role extends GrantedAuthority {
+    RoleName getRoleName();
+    Long getId();
 }
