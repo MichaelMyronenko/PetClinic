@@ -1,4 +1,4 @@
-package com.dve.petclinic.security.registration;
+package com.dve.petclinic.security.registration.userRegistration;
 
 import lombok.*;
 
@@ -8,9 +8,9 @@ import javax.validation.constraints.Size;
 @Builder
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-public class UserRegistrationModel {
+@AllArgsConstructor
+public class CommonUserRegistrationModel implements UserRegistrationModel {
     @NotBlank
     @Size(min = 3, max = 20)
     public String username;
