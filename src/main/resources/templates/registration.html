@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Login - Shopme Admin</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css} "/>
+
+</head>
+<body>
+<div class="container-fluid text-center">
+    <form th:action="@{/registration}" method="post" style="max-width: 350px; margin: 100px auto;">
+
+        <div class="border border-secondary p-3 rounded">
+            <p>Access to Pet Clinic</p>
+            <p>
+                <input type="text" th:name="username" class="form-control" placeholder="Username" required autofocus/>
+            </p>
+            <p>
+                <input type="password" th:name="password" class="form-control" placeholder="Password" required/>
+            </p>
+            <p class="doctors-login" style="display: none">
+                <input type="password" th:name="secretDoctorsKey" class="form-control" placeholder="Doctor's secret"/>
+            </p>
+            <p>
+                <label for="i-am-doctor">I am a Doctor</label>
+                <input type="checkbox" th:name="i-am-doctor" id="i-am-doctor" class="i-am-doctor"/>&nbsp;
+            </p>
+            <p>
+                <input type="submit" value="Sign up" class="btn btn-primary"/>
+            </p>
+            <p th:text="${invalidCredentials}" class="alert-danger"></p>
+        </div>
+    </form>
+</div>
+
+<script th:src="@{/webjars/jquery/3.6.0/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.4.1-1/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/doctorsCheckbox.js}"></script>
+
+</body>
+</html>
