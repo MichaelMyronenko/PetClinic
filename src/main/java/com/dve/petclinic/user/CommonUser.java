@@ -1,6 +1,7 @@
 package com.dve.petclinic.user;
 
 import com.dve.petclinic.user.role.CommonRole;
+import com.dve.petclinic.user.role.RoleName;
 import lombok.*;
 
 import javax.persistence.*;
@@ -37,6 +38,12 @@ public class CommonUser implements User {
     private Set<CommonRole> roles;
 
     private boolean active;
+
+    @Override
+    public boolean hasRole(RoleName roleName) {
+        return roles.stream()
+                .anyMatch(commonRole -> commonRole.getRoleName().equals(roleName));
+    }
 
     @Override
     public boolean equals(Object o) {

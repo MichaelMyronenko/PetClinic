@@ -2,6 +2,7 @@ package com.dve.petclinic.security.registration;
 
 import com.dve.petclinic.generalExceptions.ConflictException;
 import com.dve.petclinic.generalExceptions.InvalidCredentialsException;
+import com.dve.petclinic.security.registration.userRegistration.CommonUserRegistrationModel;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,24 +17,24 @@ import javax.validation.Valid;
 @AllArgsConstructor
 public class RegistrationController {
     private final
-    UserRegistrationService userRegistrationService;
+    RegistrationService registrationService;
 
     @GetMapping("/registration")
     public String registration(Model model) {
-        model.addAttribute("userForm", new UserRegistrationModel());
+        model.addAttribute("userForm", new CommonUserRegistrationModel());
 
         return "registration";
     }
 
     @PostMapping("/registration")
-    public String registerUser(@Valid @ModelAttribute("userForm") UserRegistrationModel userModel,
+    public String registerUser(@Valid @ModelAttribute("userForm") CommonUserRegistrationModel userModel,
                                BindingResult bindingResult,
                                Model model) {
         if (bindingResult.hasErrors()) {
             return "registration";
         }
         try {
-            userRegistrationService.registerUser(userModel);
+            registrationService.register(userModel);
         } catch (ConflictException exception) {
             model.addAttribute("usernameError", exception.getMessage());
             return "registration";
