@@ -2,6 +2,8 @@ package com.dve.petclinic.user;
 
 import com.dve.petclinic.user.role.Role;
 
+import java.util.Set;
+
 public interface User {
     Long getId();
 
@@ -9,5 +11,7 @@ public interface User {
 
     String getPassword();
 
-    Role getRole();
+    Set<? extends Role> getRoles();
+
+    boolean isActive();
 }

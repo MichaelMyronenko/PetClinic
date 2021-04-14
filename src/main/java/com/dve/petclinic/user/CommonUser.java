@@ -1,12 +1,24 @@
 package com.dve.petclinic.user;
 
-import com.dve.petclinic.user.role.Role;
+import com.dve.petclinic.user.role.CommonRole;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.Objects;
+import java.util.Set;
 
+@NamedEntityGraph(
+        name = "user.roles",
+        attributeNodes = @NamedAttributeNode("roles")
+)
 @Entity
+@Builder
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "users")
-public class CommonUser implements User{
+public class CommonUser implements User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,41 +28,27 @@ public class CommonUser implements User{
 
     private String password;
 
-    @Enumerated(EnumType.STRING)
-    private Role role;
+    @ManyToMany
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<CommonRole> roles;
 
-    public Long getId() {
-        return id;
-    }
+    private boolean active;
 
-    public void setId(Long id) {
-        this.id = id;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CommonUser that = (CommonUser) o;
+        return id.equals(that.id);
     }
 
     @Override
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
-
-    @Override
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    @Override
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
+
