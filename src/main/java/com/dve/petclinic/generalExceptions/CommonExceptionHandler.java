@@ -17,4 +17,20 @@ public class CommonExceptionHandler {
         return ImmutableErrorResponseDto.builder()
                 .message(exception.getMessage()).build();
     }
+
+    @ExceptionHandler(ConflictException.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    protected ErrorResponseDto handleConflictException(ConflictException exception) {
+        log.error(exception.getMessage());
+        return ImmutableErrorResponseDto.builder()
+                .message(exception.getMessage()).build();
+    }
+
+    @ExceptionHandler(InvalidCredentialsException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    protected ErrorResponseDto handleInvalidCredentialsException(InvalidCredentialsException exception) {
+        log.error(exception.getMessage());
+        return ImmutableErrorResponseDto.builder()
+                .message(exception.getMessage()).build();
+    }
 }
