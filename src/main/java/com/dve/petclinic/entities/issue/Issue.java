@@ -2,10 +2,7 @@ package com.dve.petclinic.entities.issue;
 
 import com.dve.petclinic.entities.doctor.Doctor;
 import com.dve.petclinic.entities.owner.Owner;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -17,6 +14,7 @@ import javax.persistence.*;
 @Table(name = "issues")
 @Getter
 @Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class Issue {
