@@ -23,8 +23,8 @@ public class InitRolesResolver {
     Set<CommonRole> getRoles(String secretDoctorsKey) {
         Set<CommonRole> roles = new HashSet<>();
         roles.add(roleRepository.findByRoleName(USER).orElseThrow());
+        roles.add(roleRepository.findByRoleName(OWNER).orElseThrow());
         if (isBlank(secretDoctorsKey)) {
-            roles.add(roleRepository.findByRoleName(OWNER).orElseThrow());
             return roles;
         } else if (secretDoctorsKey.equals(securityProperties.getSecretDoctorsKey())) {
             roles.add(roleRepository.findByRoleName(DOCTOR).orElseThrow());

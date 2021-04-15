@@ -1,4 +1,4 @@
-package com.dve.petclinic.doctor;
+package com.dve.petclinic.owner;
 
 import com.dve.petclinic.user.CommonUser;
 import lombok.*;
@@ -9,16 +9,17 @@ import java.util.Objects;
 @Entity
 @Getter
 @Setter
-@Table(name = "doctors")
 @Builder
+@Table(name = "owners")
 @AllArgsConstructor
 @NoArgsConstructor
-public class CommonDoctor implements Doctor{
+public class CommonOwner implements Owner {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String position;
+    private String phoneNumber;
 
     @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
@@ -28,8 +29,8 @@ public class CommonDoctor implements Doctor{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CommonDoctor doctor = (CommonDoctor) o;
-        return id.equals(doctor.id);
+        CommonOwner that = (CommonOwner) o;
+        return id.equals(that.id);
     }
 
     @Override
