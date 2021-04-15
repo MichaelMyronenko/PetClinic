@@ -5,7 +5,6 @@ import com.dve.petclinic.security.registration.ownerRegistration.OwnerRegistrati
 import com.dve.petclinic.security.registration.userRegistration.UserRegistrationModel;
 import com.dve.petclinic.security.registration.userRegistration.UserRegistrationService;
 import com.dve.petclinic.user.CommonUser;
-import com.dve.petclinic.user.User;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

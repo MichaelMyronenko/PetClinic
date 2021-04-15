@@ -32,10 +32,10 @@ public class Issue {
     private IssueStatus status;
 
     @ManyToOne
-    @JoinColumn(name = "created_by", referencedColumnName = "id")
+    @JoinColumn(name = "owner_id", referencedColumnName = "id")
     private Owner createdBy;
 
     @ManyToOne
-    @JoinColumn(name = "assigned_to", referencedColumnName = "id")
+    @JoinColumn(name = "doctor_id", referencedColumnName = "id")
     private Doctor assignedTo;
 }
