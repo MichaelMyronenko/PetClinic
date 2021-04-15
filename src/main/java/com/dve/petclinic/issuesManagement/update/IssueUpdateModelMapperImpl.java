@@ -1,9 +1,7 @@
 package com.dve.petclinic.issuesManagement.update;
 
 import com.dve.petclinic.entities.issue.Issue;
-import org.springframework.stereotype.Component;
 
-@Component
 public class IssueUpdateModelMapperImpl implements IssueUpdateModelMapper<Issue, IssueUpdateModel>{
     @Override
     public void updateEntity(Issue entity, IssueUpdateModel updateModel) {

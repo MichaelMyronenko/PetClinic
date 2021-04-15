@@ -19,7 +19,7 @@ import static com.dve.petclinic.entities.user.role.RoleName.DOCTOR;
 public class IssueUpdateService {
     private final IssueRepository issueRepository;
     private final DoctorRepository doctorRepository;
-    private final IssueUpdateModelMapper<Issue, IssueUpdateModel> modelMapper;
+    private final IssueUpdateModelMapper<Issue, IssueUpdateModel> modelMapper = new IssueUpdateModelMapperImpl();
 
     public void edit(Long issueId, IssueUpdateModel editModel, AuthenticatedUser user) {
         Issue issue = fetchIssueById(issueId);
@@ -66,6 +66,19 @@ public class IssueUpdateService {
                 || issue.getAssignedTo().equals(doctor)) {
             issue.setAssignedTo(null);
             issue.setStatus(OPENED);
+        }
+    }
+
+    public void closeIssue(Long issueId, AuthenticatedUser user) {
+        Issue issue = fetchIssueById(issueId);
+
+        if (user.equalsToUser(issue.getCreatedBy().getUser())) {
+            if (issue.getStatus().equals(CLOSED)) {
+                throw new ConflictException("The issue is already closed!");
+            }
+            issue.setStatus(CLOSED);
+        } else {
+            throw new ForbiddenException("You can't close the issue!");
         }
     }
 
