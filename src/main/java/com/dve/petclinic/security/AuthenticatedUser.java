@@ -13,6 +13,10 @@ public class AuthenticatedUser implements UserDetails {
 
     private final User user;
 
+    public Long getUserId() {
+        return user.getId();
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return user.getRoles();
