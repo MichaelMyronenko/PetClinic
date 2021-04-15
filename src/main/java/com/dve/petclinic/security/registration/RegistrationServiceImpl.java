@@ -24,12 +24,12 @@ public class RegistrationServiceImpl implements RegistrationService {
     @Override
     @Transactional
     public void register(UserRegistrationModel registrationModel) {
-        User user = userRegistrationService.registerUser(registrationModel);
+        CommonUser user = userRegistrationService.registerUser(registrationModel);
         if (user.hasRole(OWNER)) {
-            ownerRegistrationService.registerOwner((CommonUser) user);
+            ownerRegistrationService.registerOwner(user);
         }
         if (user.hasRole(DOCTOR)) {
-            doctorRegistrationService.registerDoctor((CommonUser) user);
+            doctorRegistrationService.registerDoctor(user);
         }
     }
 }

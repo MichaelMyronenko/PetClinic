@@ -1,7 +1,6 @@
 package com.dve.petclinic.security;
 
 import com.dve.petclinic.generalExceptions.InvalidCredentialsException;
-import com.dve.petclinic.generalExceptions.NotFoundException;
 import com.dve.petclinic.user.UserRepository;
 import com.dve.petclinic.user.UserService;
 import lombok.AllArgsConstructor;

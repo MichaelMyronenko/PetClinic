@@ -1,6 +1,6 @@
 package com.dve.petclinic.security.registration.doctorRegistraton;
 
-import com.dve.petclinic.doctor.CommonDoctor;
+import com.dve.petclinic.doctor.Doctor;
 import com.dve.petclinic.doctor.DoctorRepository;
 import com.dve.petclinic.user.CommonUser;
 import lombok.AllArgsConstructor;
@@ -13,7 +13,7 @@ public class DoctorRegistrationServiceImpl implements DoctorRegistrationService 
 
     @Override
     public void registerDoctor(CommonUser user) {
-        CommonDoctor doctor = CommonDoctor.builder().user(user).build();
+        Doctor doctor = Doctor.builder().user(user).build();
         doctorRepository.save(doctor);
     }
 }

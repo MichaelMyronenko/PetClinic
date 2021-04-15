@@ -1,6 +1,6 @@
 package com.dve.petclinic.security.registration.ownerRegistration;
 
-import com.dve.petclinic.owner.CommonOwner;
+import com.dve.petclinic.owner.Owner;
 import com.dve.petclinic.owner.OwnerRepository;
 import com.dve.petclinic.user.CommonUser;
 import lombok.AllArgsConstructor;
@@ -13,7 +13,7 @@ public class OwnerRegistrationServiceImpl implements OwnerRegistrationService{
 
     @Override
     public void registerOwner(CommonUser user) {
-        CommonOwner owner = CommonOwner.builder().user(user).build();
+        Owner owner = Owner.builder().user(user).build();
         ownerRepository.save(owner);
     }
 }
