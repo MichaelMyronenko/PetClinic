@@ -1,4 +1,4 @@
-package com.dve.petclinic.issue;
+package com.dve.petclinic.entities.issue;
 
 public enum IssueStatus {
     UNRESOLVED,

@@ -1,4 +1,4 @@
-package com.dve.petclinic.doctor;
+package com.dve.petclinic.entities.doctor;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

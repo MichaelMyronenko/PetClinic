@@ -4,14 +4,14 @@ import com.dve.petclinic.security.registration.doctorRegistraton.DoctorRegistrat
 import com.dve.petclinic.security.registration.ownerRegistration.OwnerRegistrationService;
 import com.dve.petclinic.security.registration.userRegistration.UserRegistrationModel;
 import com.dve.petclinic.security.registration.userRegistration.UserRegistrationService;
-import com.dve.petclinic.user.CommonUser;
+import com.dve.petclinic.entities.user.CommonUser;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 
-import static com.dve.petclinic.user.role.RoleName.DOCTOR;
-import static com.dve.petclinic.user.role.RoleName.OWNER;
+import static com.dve.petclinic.entities.user.role.RoleName.DOCTOR;
+import static com.dve.petclinic.entities.user.role.RoleName.OWNER;
 
 @Service
 @AllArgsConstructor

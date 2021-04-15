@@ -1,8 +1,8 @@
 package com.dve.petclinic.security.registration.ownerRegistration;
 
-import com.dve.petclinic.owner.Owner;
-import com.dve.petclinic.owner.OwnerRepository;
-import com.dve.petclinic.user.CommonUser;
+import com.dve.petclinic.entities.owner.Owner;
+import com.dve.petclinic.entities.owner.OwnerRepository;
+import com.dve.petclinic.entities.user.CommonUser;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

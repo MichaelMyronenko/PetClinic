@@ -1,7 +1,7 @@
 package com.dve.petclinic.security;
 
 
-import com.dve.petclinic.user.User;
+import com.dve.petclinic.entities.user.User;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,7 +1,7 @@
-package com.dve.petclinic.user;
+package com.dve.petclinic.entities.user;
 
-import com.dve.petclinic.user.role.CommonRole;
-import com.dve.petclinic.user.role.RoleName;
+import com.dve.petclinic.entities.user.role.CommonRole;
+import com.dve.petclinic.entities.user.role.RoleName;
 import lombok.*;
 
 import javax.persistence.*;

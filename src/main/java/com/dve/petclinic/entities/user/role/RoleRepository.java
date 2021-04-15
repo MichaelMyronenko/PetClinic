@@ -1,4 +1,4 @@
-package com.dve.petclinic.user.role;
+package com.dve.petclinic.entities.user.role;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

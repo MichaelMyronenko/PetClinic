@@ -1,4 +1,4 @@
-package com.dve.petclinic.owner;
+package com.dve.petclinic.entities.owner;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

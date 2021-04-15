@@ -1,6 +1,6 @@
-package com.dve.petclinic.doctor;
+package com.dve.petclinic.entities.doctor;
 
-import com.dve.petclinic.user.CommonUser;
+import com.dve.petclinic.entities.user.CommonUser;
 import lombok.*;
 
 import javax.persistence.*;

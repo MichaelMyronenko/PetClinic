@@ -1,7 +1,7 @@
-package com.dve.petclinic.issue;
+package com.dve.petclinic.entities.issue;
 
-import com.dve.petclinic.doctor.Doctor;
-import com.dve.petclinic.owner.Owner;
+import com.dve.petclinic.entities.doctor.Doctor;
+import com.dve.petclinic.entities.owner.Owner;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
