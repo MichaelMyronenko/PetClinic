@@ -2,6 +2,7 @@ package com.dve.petclinic.security;
 
 
 import com.dve.petclinic.entities.user.User;
+import com.dve.petclinic.entities.user.role.RoleName;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -50,5 +51,13 @@ public class AuthenticatedUser implements UserDetails {
     @Override
     public boolean isEnabled() {
         return user.isActive();
+    }
+
+    public boolean equalsToUser(User anotherUser) {
+        return user.getId().equals(anotherUser.getId());
+    }
+
+    public boolean hasRole(RoleName role) {
+        return user.hasRole(role);
     }
 }
