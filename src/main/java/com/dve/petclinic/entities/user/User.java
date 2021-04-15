@@ -1,7 +1,7 @@
-package com.dve.petclinic.user;
+package com.dve.petclinic.entities.user;
 
-import com.dve.petclinic.user.role.Role;
-import com.dve.petclinic.user.role.RoleName;
+import com.dve.petclinic.entities.user.role.Role;
+import com.dve.petclinic.entities.user.role.RoleName;
 
 import java.util.Set;
 

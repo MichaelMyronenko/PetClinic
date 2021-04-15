@@ -1,8 +1,8 @@
 package com.dve.petclinic.security.registration.userRegistration;
 
-import com.dve.petclinic.user.User;
-import com.dve.petclinic.user.UserService;
+import com.dve.petclinic.entities.user.CommonUser;
+import com.dve.petclinic.entities.user.UserService;
 
 public interface UserRegistrationService extends UserService {
-    User registerUser(UserRegistrationModel userModel);
+    CommonUser registerUser(UserRegistrationModel userModel);
 }

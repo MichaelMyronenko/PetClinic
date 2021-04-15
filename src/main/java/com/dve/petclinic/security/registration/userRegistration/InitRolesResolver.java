@@ -2,16 +2,16 @@ package com.dve.petclinic.security.registration.userRegistration;
 
 import com.dve.petclinic.generalExceptions.InvalidCredentialsException;
 import com.dve.petclinic.security.SecurityProperties;
-import com.dve.petclinic.user.role.CommonRole;
-import com.dve.petclinic.user.role.RoleRepository;
+import com.dve.petclinic.entities.user.role.CommonRole;
+import com.dve.petclinic.entities.user.role.RoleRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.dve.petclinic.user.role.RoleName.*;
-import static com.dve.petclinic.user.role.RoleName.ADMIN;
+import static com.dve.petclinic.entities.user.role.RoleName.*;
+import static com.dve.petclinic.entities.user.role.RoleName.ADMIN;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 
 @Component

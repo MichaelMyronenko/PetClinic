@@ -1,6 +1,6 @@
 package com.dve.petclinic.security.registration.userRegistration;
 
-import com.dve.petclinic.user.CommonUser;
+import com.dve.petclinic.entities.user.CommonUser;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;

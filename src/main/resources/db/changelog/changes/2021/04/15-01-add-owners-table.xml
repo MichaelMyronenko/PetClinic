@@ -8,10 +8,10 @@
     <changeSet author="mykhailo" id="add-owners-table">
         <createTable tableName="owners">
             <column name="id" autoIncrement="true" type="BIGINT">
-                <constraints nullable="false"/>
+                <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="user_id" type="BIGINT">
-                <constraints nullable="false" foreignKeyName="doctors_users_fk" references="users(id)"/>
+                <constraints nullable="false" foreignKeyName="owners_users_fk" references="users(id)"/>
             </column>
             <column name="phone_number" type="VARCHAR(512)"/>
         </createTable>

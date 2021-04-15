@@ -1,6 +1,6 @@
-package com.dve.petclinic.doctor;
+package com.dve.petclinic.entities.doctor;
 
-import com.dve.petclinic.user.CommonUser;
+import com.dve.petclinic.entities.user.CommonUser;
 import lombok.*;
 
 import javax.persistence.*;
@@ -13,7 +13,7 @@ import java.util.Objects;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CommonDoctor implements Doctor{
+public class Doctor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,7 +28,7 @@ public class CommonDoctor implements Doctor{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CommonDoctor doctor = (CommonDoctor) o;
+        Doctor doctor = (Doctor) o;
         return id.equals(doctor.id);
     }
 

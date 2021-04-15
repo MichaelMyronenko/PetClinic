@@ -1,6 +1,6 @@
-package com.dve.petclinic.user.role;
+package com.dve.petclinic.entities.user.role;
 
-import com.dve.petclinic.user.CommonUser;
+import com.dve.petclinic.entities.user.CommonUser;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

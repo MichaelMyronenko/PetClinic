@@ -1,6 +1,6 @@
-package com.dve.petclinic.owner;
+package com.dve.petclinic.entities.owner;
 
-import com.dve.petclinic.user.CommonUser;
+import com.dve.petclinic.entities.user.CommonUser;
 import lombok.*;
 
 import javax.persistence.*;
@@ -13,7 +13,7 @@ import java.util.Objects;
 @Table(name = "owners")
 @AllArgsConstructor
 @NoArgsConstructor
-public class CommonOwner implements Owner {
+public class Owner {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +29,7 @@ public class CommonOwner implements Owner {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CommonOwner that = (CommonOwner) o;
+        Owner that = (Owner) o;
         return id.equals(that.id);
     }
 

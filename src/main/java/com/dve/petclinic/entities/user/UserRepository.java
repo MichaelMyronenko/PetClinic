@@ -1,4 +1,4 @@
-package com.dve.petclinic.user;
+package com.dve.petclinic.entities.user;
 
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
