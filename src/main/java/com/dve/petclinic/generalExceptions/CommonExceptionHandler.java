@@ -33,4 +33,12 @@ public class CommonExceptionHandler {
         return ImmutableErrorResponseDto.builder()
                 .message(exception.getMessage()).build();
     }
+
+    @ExceptionHandler(ForbiddenException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    protected ErrorResponseDto handleInvalidCredentialsException(ForbiddenException exception) {
+        log.error(exception.getMessage());
+        return ImmutableErrorResponseDto.builder()
+                .message(exception.getMessage()).build();
+    }
 }

@@ -2,6 +2,8 @@ package com.dve.petclinic.entities.doctor;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface DoctorRepository extends JpaRepository<Doctor, Long> {
+import java.util.Optional;
 
+public interface DoctorRepository extends JpaRepository<Doctor, Long> {
+    Optional<Doctor> findByUserId(Long userId);
 }
