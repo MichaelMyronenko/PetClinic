@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class IssueCreationModelMapperImpl
         implements IssueCreationModelMapper<Issue, IssueCreationModel> {
+
     @Override
     public Issue mapToEntity(IssueCreationModel model) {
         return Issue.builder()

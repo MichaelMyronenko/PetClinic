@@ -2,6 +2,7 @@ package com.dve.petclinic.entities.issue;
 
 import com.dve.petclinic.entities.doctor.Doctor;
 import com.dve.petclinic.entities.owner.Owner;
+import com.dve.petclinic.entities.pet.Pet;
 import lombok.*;
 
 import javax.persistence.*;
@@ -28,6 +29,10 @@ public class Issue {
 
     @Enumerated(EnumType.STRING)
     private IssueStatus status;
+
+    @ManyToOne
+    @JoinColumn(name ="pet_id", referencedColumnName = "id")
+    private Pet pet;
 
     @ManyToOne
     @JoinColumn(name = "owner_id", referencedColumnName = "id")
