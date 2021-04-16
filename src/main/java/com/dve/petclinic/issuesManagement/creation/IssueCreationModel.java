@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Getter
@@ -19,4 +20,6 @@ public class IssueCreationModel {
     private String title;
     @Max(1000)
     private String description;
+    @NotNull
+    private Long petId;
 }
