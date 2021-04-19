@@ -22,9 +22,10 @@ public class PetUpdateService {
         } else {
             throw new ForbiddenException("You can't edit this pet, It is not yours!!!");
         }
+        petRepository.save(pet);
     }
 
-    public Pet fetchPet(Long petId) {
+    private Pet fetchPet(Long petId) {
         return petRepository.findById(petId)
                 .orElseThrow(() -> new NotFoundException("Not found pet with id " + petId));
     }
