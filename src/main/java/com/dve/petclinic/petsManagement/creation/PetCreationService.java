@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 public class PetCreationService {
     private final PetRepository petRepository;
     private final OwnerRepository ownerRepository;
-    private final PetCreationModelMapper<Pet, PetCreationModel> modelMapper = new PetCreationModelMapperImpl();
+    private final PetCreationModelMapper<Pet, PetCreationModel> modelMapper;
 
     public void create(PetCreationModel creationModel, AuthenticatedUser user) {
         Owner owner = fetchOwnerByUserId(user.getUserId());

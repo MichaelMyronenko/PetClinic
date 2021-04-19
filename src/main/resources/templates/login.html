@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title>Login - Shopme Admin</title>
+    <title>Login</title>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css} "/>
 </head>
 <body>
@@ -19,7 +19,7 @@
                 <input type="password" th:name="password" class="form-control" placeholder="Password" required />
             </p>
             <p>
-                <input type="submit" value="Sign up" class="btn btn-primary" />
+                <input type="submit" value="Sign in" class="btn btn-primary" />
             </p>
             <div th:if="${param.error}">
                 <p class="alert-danger">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</p>
@@ -30,6 +30,5 @@
 
 <script th:src="@{/webjars/jquery/3.6.0/jquery.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/4.4.1-1/js/bootstrap.min.js}"></script>
-<script th:src="@{/js/doctorsCheckbox.js}"></script>
 </body>
 </html>
