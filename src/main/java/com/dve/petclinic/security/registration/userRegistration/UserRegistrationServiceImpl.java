@@ -1,8 +1,8 @@
 package com.dve.petclinic.security.registration.userRegistration;
 
-import com.dve.petclinic.generalExceptions.ConflictException;
 import com.dve.petclinic.entities.user.CommonUser;
 import com.dve.petclinic.entities.user.UserRepository;
+import com.dve.petclinic.generalExceptions.ConflictException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

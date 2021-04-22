@@ -9,13 +9,15 @@
 </head>
 <body>
 <div class="container-fluid text-center">
-    <form th:action="@{/registration}" method="post" style="max-width: 350px; margin: 100px auto;">
+    <form th:action="@{/registration}" th:object="${userForm}" method="post"
+          style="max-width: 350px; margin: 100px auto;">
 
         <div class="border border-secondary p-3 rounded">
             <p>Access to Pet Clinic</p>
-            <p>
+            <div>
+                <p th:each="err : ${#fields.errors('username')}" th:text="${err}" class="alert-danger"></p>
                 <input type="text" th:name="username" class="form-control" placeholder="Username" required autofocus/>
-            </p>
+            </div>
             <p>
                 <input type="password" th:name="password" class="form-control" placeholder="Password" required/>
             </p>
@@ -24,13 +26,11 @@
             </p>
             <p>
                 <label for="i-am-doctor">I am a Doctor</label>
-                <input type="checkbox" name="iAmDoctor" id="i-am-doctor" class="i-am-doctor"  th:checked="${iAmDoctor}"/>&nbsp;
+                <input type="checkbox" name="iAmDoctor" id="i-am-doctor" class="i-am-doctor" th:checked="${iAmDoctor}"/>&nbsp;
             </p>
             <p>
                 <input type="submit" value="Sign up" class="btn btn-primary"/>
             </p>
-            <p th:text="${invalidCredentials}" class="alert-danger"></p>
-            <p th:text="${usernameError}" class="alert-danger"></p>
         </div>
     </form>
 </div>

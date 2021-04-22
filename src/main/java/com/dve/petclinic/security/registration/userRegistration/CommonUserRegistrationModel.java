@@ -11,11 +11,15 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CommonUserRegistrationModel implements UserRegistrationModel {
+
     @NotBlank
     @Size(min = 3, max = 20)
+    @Username
     public String username;
+
     @NotBlank
     @Size(min = 4, max = 18)
     public String password;
+
     public String secretDoctorsKey;
 }

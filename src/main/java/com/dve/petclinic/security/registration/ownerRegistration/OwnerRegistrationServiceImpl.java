@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class OwnerRegistrationServiceImpl implements OwnerRegistrationService{
+public class OwnerRegistrationServiceImpl implements OwnerRegistrationService {
     private final OwnerRepository ownerRepository;
 
     @Override

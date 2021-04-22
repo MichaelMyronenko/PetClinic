@@ -1,10 +1,10 @@
 package com.dve.petclinic.security.registration;
 
+import com.dve.petclinic.entities.user.CommonUser;
 import com.dve.petclinic.security.registration.doctorRegistraton.DoctorRegistrationService;
 import com.dve.petclinic.security.registration.ownerRegistration.OwnerRegistrationService;
 import com.dve.petclinic.security.registration.userRegistration.UserRegistrationModel;
 import com.dve.petclinic.security.registration.userRegistration.UserRegistrationService;
-import com.dve.petclinic.entities.user.CommonUser;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
