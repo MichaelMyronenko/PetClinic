@@ -1,19 +1,14 @@
 package com.dve.petclinic.entities.doctor;
 
 import com.dve.petclinic.entities.user.CommonUser;
-import lombok.*;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Getter
-@Setter
 @Table(name = "doctors")
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 public class Doctor {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -35,5 +30,42 @@ public class Doctor {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public Doctor() {
+    }
+
+    public Doctor(CommonUser user) {
+        this.user = user;
+    }
+
+    public Doctor(Long id, String position, CommonUser user) {
+        this.id = id;
+        this.position = position;
+        this.user = user;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public CommonUser getUser() {
+        return user;
+    }
+
+    public void setUser(CommonUser user) {
+        this.user = user;
     }
 }

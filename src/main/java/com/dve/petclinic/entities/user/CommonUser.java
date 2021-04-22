@@ -2,7 +2,6 @@ package com.dve.petclinic.entities.user;
 
 import com.dve.petclinic.entities.user.role.CommonRole;
 import com.dve.petclinic.entities.user.role.RoleName;
-import lombok.*;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -13,13 +12,8 @@ import java.util.Set;
         attributeNodes = @NamedAttributeNode("roles")
 )
 @Entity
-@Builder
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "users")
-public class CommonUser implements User {
+public class CommonUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,7 +33,6 @@ public class CommonUser implements User {
 
     private boolean active;
 
-    @Override
     public boolean hasRole(RoleName roleName) {
         return roles.stream()
                 .anyMatch(commonRole -> commonRole.getRoleName().equals(roleName));
@@ -56,6 +49,64 @@ public class CommonUser implements User {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public CommonUser() {
+    }
+
+    public CommonUser(String username, String password, Set<CommonRole> roles, boolean active) {
+        this.username = username;
+        this.password = password;
+        this.roles = roles;
+        this.active = active;
+    }
+
+    public CommonUser(Long id, String username, String password, Set<CommonRole> roles, boolean active) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.roles = roles;
+        this.active = active;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Set<CommonRole> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<CommonRole> roles) {
+        this.roles = roles;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }
 
