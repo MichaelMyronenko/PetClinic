@@ -5,6 +5,7 @@ import org.springframework.lang.Nullable;
 
 @Value.Immutable
 public abstract class DoctorResponseModel {
+
     public abstract Long getId();
 
     public abstract String getUsername();
