@@ -1,22 +1,15 @@
 package com.dve.petclinic.entities.user.role;
 
 import com.dve.petclinic.entities.user.CommonUser;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "roles")
-public class CommonRole implements Role {
+public class CommonRole implements GrantedAuthority {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,5 +37,38 @@ public class CommonRole implements Role {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public CommonRole() {
+    }
+
+    public CommonRole(Long id, RoleName roleName, Set<CommonUser> users) {
+        this.id = id;
+        this.roleName = roleName;
+        this.users = users;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public RoleName getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(RoleName roleName) {
+        this.roleName = roleName;
+    }
+
+    public Set<CommonUser> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<CommonUser> users) {
+        this.users = users;
     }
 }

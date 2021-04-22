@@ -8,7 +8,7 @@
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css} "/>
 </head>
 <body>
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Pet clinic</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
             aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,7 +24,7 @@
                 <a class="nav-link" href="/pets">Pets</a>
             </li>
             <li class="nav-item" sec:authorize="hasAnyRole('ROLE_OWNER','ROLE_DOCTOR','ROLE_ADMIN')">
-                <a class="nav-link" href="#">Issues</a>
+                <a class="nav-link" href="/issues">Issues</a>
             </li>
 
         </ul>

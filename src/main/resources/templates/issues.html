@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Issues</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css} "/>
+    <link rel="stylesheet" th:href="@{/css/issues/issues.css} "/>
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">Pet clinic</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" sec:authorize="isAuthenticated()">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item" sec:authorize="isAuthenticated()">
+                <a class="nav-link" href="/pets">Pets</a>
+            </li>
+            <li class="nav-item active" sec:authorize="hasAnyRole('ROLE_OWNER','ROLE_DOCTOR','ROLE_ADMIN')">
+                <a class="nav-link" href="/issues">Issues</a>
+            </li>
+
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item" sec:authorize="isAnonymous()">
+                <a class="nav-link" href="/login">Sign in</a>
+            </li>
+            <li class="nav-item" sec:authorize="isAnonymous()">
+                <a class="nav-link" href="/registration">Sign up</a>
+            </li>
+            <li class="nav-item" sec:authorize="isAuthenticated()">
+                <a class="nav-link" href="/perform_logout">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="issues-links" style="margin-top: 5px" sec:authorize="hasRole('ROLE_DOCTOR')">
+    <ul class="nav nav-tabs justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link active">My issues</a>
+            <input type="hidden" class="type" value="owners-view">
+        </li>
+        <li class="nav-item">
+            <a class="nav-link">Opened issues</a>
+            <input type="hidden" class="type" value="doctors-view">
+        </li>
+    </ul>
+</div>
+
+<div class="owner-issue-view issue-view" sec:authorize="hasRole('ROLE_OWNER')">
+    <div class="position-relative col-10 ml-auto mr-auto" style="margin-top: 80px">
+        <form th:action="@{/issues}" th:object="${issueCreationForm}" method="post">
+            <div class="form-group">
+                <input class="form-control" type="text" placeholder="Title" th:name="title">
+            </div>
+            <div class="form-group">
+                <select class="form-control" id="exampleFormControlSelect1" th:name="petId">
+                    <option th:each="pet : ${petList}" th:value="${pet.getPetId()}"
+                            th:text="${pet.getPetName()}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+            <textarea class="form-control" th:name="description" id="exampleFormControlTextarea1" rows="4"
+                      style="resize: none"
+                      placeholder="Issue description"></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn d-block ml-auto btn-primary create-issue-btn" style="width: 150px">
+                    Create issue
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="my-issues-list col-10 mr-auto ml-auto">
+        <ul class="list-group">
+        </ul>
+    </div>
+</div>
+
+<div sec:authorize="hasRole('ROLE_DOCTOR')" class="doctor-issue-view issue-view" style="display: none; margin-top: 80px">
+    <div class="opened-issues-list col-10 mr-auto ml-auto">
+        <ul class="list-group">
+        </ul>
+    </div>
+</div>
+<script th:src="@{/webjars/jquery/3.6.0/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.4.1-1/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/issues/toggleDoctorsView.js}"></script>
+<script th:src="@{/js/issues/doctors/getOpenedIssueList.js}"></script>
+<script th:src="@{/js/issues/doctors/assignIssueToMe.js}"></script>
+<script th:src="@{/js/issues/owners/getMyIssueList.js}"></script>
+</body>
+</html>

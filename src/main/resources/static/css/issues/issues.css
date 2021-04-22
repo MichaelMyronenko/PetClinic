@@ -1,0 +1,4 @@
+.opened-issues-list [class*="issue-list-item"]:hover {
+    background-color: #e3e3e3;
+    cursor: pointer;
+}

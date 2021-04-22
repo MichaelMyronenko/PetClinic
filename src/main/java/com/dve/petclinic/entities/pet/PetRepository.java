@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @Repository
 public interface PetRepository extends JpaRepository<Pet, Long> {
+
     Page<Pet> findAllByOwner(Pageable pageable, Owner owner);
 
     Optional<Pet> findByIdAndOwner(Long aLong, Owner owner);

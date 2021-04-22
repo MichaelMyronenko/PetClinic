@@ -3,7 +3,6 @@ package com.dve.petclinic.petsManagement;
 import com.dve.petclinic.petsManagement.reading.PetResponseModel;
 import com.dve.petclinic.petsManagement.update.PetUpdateModel;
 import com.dve.petclinic.security.AuthenticatedUser;
-import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -14,9 +13,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/pets")
-@AllArgsConstructor
 public class PetRestController {
+
     private final PetService petService;
+
+    public PetRestController(PetService petService) {
+        this.petService = petService;
+    }
 
     @GetMapping
     public ResponseEntity<List<PetResponseModel>> getPets(@AuthenticationPrincipal AuthenticatedUser user) {

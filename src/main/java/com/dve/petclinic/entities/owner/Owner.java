@@ -1,18 +1,12 @@
 package com.dve.petclinic.entities.owner;
 
 import com.dve.petclinic.entities.user.CommonUser;
-import lombok.*;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Getter
-@Setter
-@Builder
 @Table(name = "owners")
-@AllArgsConstructor
-@NoArgsConstructor
 public class Owner {
 
     @Id
@@ -36,5 +30,42 @@ public class Owner {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public Owner() {
+    }
+
+    public Owner(CommonUser user) {
+        this.user = user;
+    }
+
+    public Owner(Long id, String phoneNumber, CommonUser user) {
+        this.id = id;
+        this.phoneNumber = phoneNumber;
+        this.user = user;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public CommonUser getUser() {
+        return user;
+    }
+
+    public void setUser(CommonUser user) {
+        this.user = user;
     }
 }

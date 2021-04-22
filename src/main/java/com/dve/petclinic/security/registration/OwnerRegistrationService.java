@@ -1,19 +1,22 @@
-package com.dve.petclinic.security.registration.ownerRegistration;
+package com.dve.petclinic.security.registration;
 
 import com.dve.petclinic.entities.owner.Owner;
 import com.dve.petclinic.entities.owner.OwnerRepository;
 import com.dve.petclinic.entities.user.CommonUser;
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-@AllArgsConstructor
-public class OwnerRegistrationServiceImpl implements OwnerRegistrationService{
+public class OwnerRegistrationService {
+
     private final OwnerRepository ownerRepository;
 
-    @Override
+    public OwnerRegistrationService(OwnerRepository ownerRepository) {
+        this.ownerRepository = ownerRepository;
+    }
+
     public void registerOwner(CommonUser user) {
-        Owner owner = Owner.builder().user(user).build();
+        Owner owner = new Owner(user);
+
         ownerRepository.save(owner);
     }
 }

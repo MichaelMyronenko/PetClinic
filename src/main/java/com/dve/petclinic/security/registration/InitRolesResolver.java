@@ -1,24 +1,27 @@
-package com.dve.petclinic.security.registration.userRegistration;
+package com.dve.petclinic.security.registration;
 
-import com.dve.petclinic.generalExceptions.InvalidCredentialsException;
-import com.dve.petclinic.security.SecurityProperties;
 import com.dve.petclinic.entities.user.role.CommonRole;
 import com.dve.petclinic.entities.user.role.RoleRepository;
-import lombok.AllArgsConstructor;
+import com.dve.petclinic.generalExceptions.InvalidCredentialsException;
+import com.dve.petclinic.security.SecurityProperties;
 import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import static com.dve.petclinic.entities.user.role.RoleName.*;
-import static com.dve.petclinic.entities.user.role.RoleName.ADMIN;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 
 @Component
-@AllArgsConstructor
 public class InitRolesResolver {
-    RoleRepository roleRepository;
-    SecurityProperties securityProperties;
+
+    private final RoleRepository roleRepository;
+    private final SecurityProperties securityProperties;
+
+    public InitRolesResolver(RoleRepository roleRepository, SecurityProperties securityProperties) {
+        this.roleRepository = roleRepository;
+        this.securityProperties = securityProperties;
+    }
 
     Set<CommonRole> getRoles(String secretDoctorsKey) {
         Set<CommonRole> roles = new HashSet<>();
