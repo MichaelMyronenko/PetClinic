@@ -9,7 +9,6 @@ import com.dve.petclinic.entities.owner.OwnerRepository;
 import com.dve.petclinic.generalExceptions.ForbiddenException;
 import com.dve.petclinic.generalExceptions.NotFoundException;
 import com.dve.petclinic.security.AuthenticatedUser;
-import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -20,12 +19,19 @@ import static com.dve.petclinic.entities.issue.IssueStatus.OPENED;
 import static com.dve.petclinic.entities.user.role.RoleName.DOCTOR;
 
 @Service
-@AllArgsConstructor
 public class IssueReadingService {
+
+    private final IssueResponseModelMapper modelMapper = new IssueResponseModelMapper();
     private final IssueRepository issueRepository;
     private final OwnerRepository ownerRepository;
     private final DoctorRepository doctorRepository;
-    private final IssueResponseModelMapper<IssueResponseModel, Issue> modelMapper;
+
+    public IssueReadingService(IssueRepository issueRepository, OwnerRepository ownerRepository,
+                               DoctorRepository doctorRepository) {
+        this.issueRepository = issueRepository;
+        this.ownerRepository = ownerRepository;
+        this.doctorRepository = doctorRepository;
+    }
 
     public List<IssueResponseModel> findIssuesForOwner(Pageable pageable, AuthenticatedUser user) {
         Owner owner = fetchOwnerByUser(user.getUserId());
@@ -46,8 +52,7 @@ public class IssueReadingService {
     public IssueResponseModel getIssue(Long issueId, AuthenticatedUser user) {
         Issue issue = fetchIssueById(issueId);
 
-        if (user.equalsToUser(issue.getCreatedBy().getUser())
-                || user.hasRole(DOCTOR)) {
+        if (user.equalsToUser(issue.getCreatedBy().getUser()) || user.hasRole(DOCTOR)) {
             return modelMapper.mapToModel(issue);
         } else {
             throw new ForbiddenException("You don't have permissions to see the issue!");

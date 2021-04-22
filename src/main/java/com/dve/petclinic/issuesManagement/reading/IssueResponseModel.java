@@ -1,6 +1,5 @@
 package com.dve.petclinic.issuesManagement.reading;
 
-import com.dve.petclinic.doctorsManagement.reading.DoctorResponseModel;
 import com.dve.petclinic.entities.issue.IssueStatus;
 import org.immutables.value.Value;
 import org.springframework.lang.Nullable;
@@ -16,7 +15,9 @@ public abstract class IssueResponseModel {
     public abstract String getIssueDescription();
 
     @Nullable
-    public abstract DoctorResponseModel getDoctor();
+    public abstract Long getDoctorId();
 
     public abstract IssueStatus getIssueStatus();
+
+
 }

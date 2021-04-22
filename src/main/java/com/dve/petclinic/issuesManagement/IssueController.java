@@ -3,7 +3,6 @@ package com.dve.petclinic.issuesManagement;
 import com.dve.petclinic.issuesManagement.creation.IssueCreationModel;
 import com.dve.petclinic.petsManagement.PetService;
 import com.dve.petclinic.security.AuthenticatedUser;
-import lombok.AllArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,10 +18,15 @@ import static com.dve.petclinic.entities.user.role.RoleName.OWNER;
 
 @Controller
 @RequestMapping("/issues")
-@AllArgsConstructor
 public class IssueController {
+
     private final IssueService issueService;
     private final PetService petService;
+
+    public IssueController(IssueService issueService, PetService petService) {
+        this.issueService = issueService;
+        this.petService = petService;
+    }
 
     @GetMapping
     public String pet(@AuthenticationPrincipal AuthenticatedUser user,

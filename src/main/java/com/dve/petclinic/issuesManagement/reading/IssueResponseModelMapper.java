@@ -2,6 +2,17 @@ package com.dve.petclinic.issuesManagement.reading;
 
 import com.dve.petclinic.entities.issue.Issue;
 
-public interface IssueResponseModelMapper<T extends IssueResponseModel, S extends Issue> {
-    T mapToModel(S entity);
+public class IssueResponseModelMapper {
+
+    public IssueResponseModel mapToModel(Issue entity) {
+        return ImmutableIssueResponseModel.builder()
+                .issueId(entity.getId())
+                .issueTitle(entity.getTitle())
+                .issueDescription(entity.getDescription())
+                .issueStatus(entity.getStatus())
+                .doctorId(entity.getAssignedTo() != null
+                        ? entity.getAssignedTo().getId()
+                        : null)
+                .build();
+    }
 }

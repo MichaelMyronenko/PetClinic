@@ -9,21 +9,26 @@ import com.dve.petclinic.entities.pet.PetRepository;
 import com.dve.petclinic.generalExceptions.ForbiddenException;
 import com.dve.petclinic.generalExceptions.NotFoundException;
 import com.dve.petclinic.security.AuthenticatedUser;
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-@AllArgsConstructor
 public class IssueCreationService {
+
     private final IssueRepository issueRepository;
     private final OwnerRepository ownerRepository;
     private final PetRepository petRepository;
-    private final IssueCreationModelMapper<Issue, IssueCreationModel> creationModelMapper;
+
+    public IssueCreationService(IssueRepository issueRepository, OwnerRepository ownerRepository, PetRepository petRepository) {
+        this.issueRepository = issueRepository;
+        this.ownerRepository = ownerRepository;
+        this.petRepository = petRepository;
+    }
 
     public void create(IssueCreationModel creationModel, AuthenticatedUser user) {
-        Issue issue = creationModelMapper.mapToEntity(creationModel);
         Pet pet = fetchPet(creationModel.getPetId());
         Owner owner = fetchOwnerByUserId(user.getUserId());
+        Issue issue = creationModel.toEntity();
+
         issue.setCreatedBy(owner);
 
         if (!(issue.getCreatedBy().equals(pet.getOwner()))) {

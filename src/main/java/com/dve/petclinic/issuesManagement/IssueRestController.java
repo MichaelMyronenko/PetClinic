@@ -2,7 +2,6 @@ package com.dve.petclinic.issuesManagement;
 
 import com.dve.petclinic.issuesManagement.reading.IssueResponseModel;
 import com.dve.petclinic.security.AuthenticatedUser;
-import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -12,9 +11,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/issues")
-@AllArgsConstructor
 public class IssueRestController {
+
     private final IssueService issueService;
+
+    public IssueRestController(IssueService issueService) {
+        this.issueService = issueService;
+    }
 
     @GetMapping
     public ResponseEntity<List<IssueResponseModel>> getIssues(@AuthenticationPrincipal AuthenticatedUser user) {
