@@ -23,11 +23,13 @@ public class IssueCreationService {
     public void create(IssueCreationModel creationModel, AuthenticatedUser user) {
         Issue issue = creationModelMapper.mapToEntity(creationModel);
         Pet pet = fetchPet(creationModel.getPetId());
-        issue.setCreatedBy(fetchOwnerByUserId(user.getUserId()));
+        Owner owner = fetchOwnerByUserId(user.getUserId());
+        issue.setCreatedBy(owner);
 
-        if (!(issue.getCreatedBy().equals(issue.getPet().getOwner()))) {
-            throw new ForbiddenException("It is not your pet! wtf r u doing???");
+        if (!(issue.getCreatedBy().equals(pet.getOwner()))) {
+            throw new ForbiddenException("It is not your pet!");
         }
+
         issue.setPet(pet);
         issueRepository.save(issue);
     }

@@ -31,7 +31,7 @@ public class Issue {
     private IssueStatus status;
 
     @ManyToOne
-    @JoinColumn(name ="pet_id", referencedColumnName = "id")
+    @JoinColumn(name = "pet_id", referencedColumnName = "id")
     private Pet pet;
 
     @ManyToOne
