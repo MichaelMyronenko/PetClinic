@@ -4,7 +4,7 @@ import com.dve.petclinic.entities.pet.Pet;
 import org.springframework.stereotype.Component;
 
 @Component
-public class PetResponseModelMapperImpl implements PetResponseModelMapper<PetResponseModel, Pet>{
+public class PetResponseModelMapperImpl implements PetResponseModelMapper<PetResponseModel, Pet> {
 
     @Override
     public PetResponseModel mapToModel(Pet entity) {
