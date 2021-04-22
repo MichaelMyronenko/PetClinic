@@ -1,19 +1,20 @@
 package com.dve.petclinic.security;
 
 import com.dve.petclinic.entities.user.UserRepository;
-import com.dve.petclinic.entities.user.UserService;
 import com.dve.petclinic.generalExceptions.InvalidCredentialsException;
-import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-@AllArgsConstructor
 @Service
-public class UserPrincipalDetailsService implements UserService, UserDetailsService {
+public class UserPrincipalDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository;
+
+    public UserPrincipalDetailsService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
