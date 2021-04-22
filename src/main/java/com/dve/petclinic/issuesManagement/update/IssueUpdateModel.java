@@ -5,8 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Getter
@@ -14,9 +12,9 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @AllArgsConstructor
 public class IssueUpdateModel {
-    @Size(min = 5, max = 255)
-    @NotBlank
+    @Size(max = 250)
     private String title;
-    @Max(1000)
+
+    @Size(max = 1000)
     private String description;
 }

@@ -32,6 +32,7 @@ public class IssueUpdateService {
         }
 
         modelMapper.updateEntity(issue, editModel);
+        issueRepository.save(issue);
     }
 
     public void assignToMe(Long issueId, AuthenticatedUser user) {
@@ -46,12 +47,13 @@ public class IssueUpdateService {
         if (issue.getAssignedTo() == null
                 && issue.getStatus().equals(OPENED)) {
             issue.setAssignedTo(doctor);
-        }
-        if (issue.getAssignedTo().equals(doctor)) {
+            issue.setStatus(IN_PROCESS);
+        } else if (issue.getAssignedTo().equals(doctor)) {
             throw new ConflictException("This issue is already assigned to you!");
         } else if (!issue.getAssignedTo().equals(doctor)) {
             throw new ForbiddenException("The issue is already assigned to another doctor!");
         }
+        issueRepository.save(issue);
     }
 
     public void unAssign(Long issueId, AuthenticatedUser user) {
@@ -67,6 +69,7 @@ public class IssueUpdateService {
             issue.setAssignedTo(null);
             issue.setStatus(OPENED);
         }
+        issueRepository.save(issue);
     }
 
     public void closeIssue(Long issueId, AuthenticatedUser user) {
@@ -80,6 +83,7 @@ public class IssueUpdateService {
         } else {
             throw new ForbiddenException("You can't close the issue!");
         }
+        issueRepository.save(issue);
     }
 
     private Issue fetchIssueById(Long issueId) {
