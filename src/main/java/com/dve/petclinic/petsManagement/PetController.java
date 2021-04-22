@@ -3,7 +3,6 @@ package com.dve.petclinic.petsManagement;
 import com.dve.petclinic.petsManagement.creation.PetCreationModel;
 import com.dve.petclinic.petsManagement.update.PetUpdateModel;
 import com.dve.petclinic.security.AuthenticatedUser;
-import lombok.AllArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,9 +12,13 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/pets")
-@AllArgsConstructor
 public class PetController {
+
     private final PetService petService;
+
+    public PetController(PetService petService) {
+        this.petService = petService;
+    }
 
     @GetMapping
     public String pet(@AuthenticationPrincipal AuthenticatedUser user,
