@@ -4,5 +4,6 @@ import org.immutables.value.Value;
 
 @Value.Immutable
 public abstract class ErrorResponseDto {
+
     public abstract String message();
 }
