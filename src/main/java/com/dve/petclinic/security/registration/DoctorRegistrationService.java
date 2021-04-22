@@ -1,19 +1,22 @@
-package com.dve.petclinic.security.registration.doctorRegistraton;
+package com.dve.petclinic.security.registration;
 
 import com.dve.petclinic.entities.doctor.Doctor;
 import com.dve.petclinic.entities.doctor.DoctorRepository;
 import com.dve.petclinic.entities.user.CommonUser;
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-@AllArgsConstructor
-public class DoctorRegistrationServiceImpl implements DoctorRegistrationService {
+public class DoctorRegistrationService {
+
     private final DoctorRepository doctorRepository;
 
-    @Override
+    public DoctorRegistrationService(DoctorRepository doctorRepository) {
+        this.doctorRepository = doctorRepository;
+    }
+
     public void registerDoctor(CommonUser user) {
-        Doctor doctor = Doctor.builder().user(user).build();
+        Doctor doctor = new Doctor(user);
+
         doctorRepository.save(doctor);
     }
 }

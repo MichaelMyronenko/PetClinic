@@ -1,4 +1,4 @@
-package com.dve.petclinic.security.registration.userRegistration;
+package com.dve.petclinic.security.registration;
 
 import com.dve.petclinic.entities.user.UserRepository;
 

@@ -1,4 +1,4 @@
-package com.dve.petclinic.security.registration.userRegistration;
+package com.dve.petclinic.security.registration;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -11,6 +11,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = UsernameValidator.class)
 public @interface Username {
+
     String message() default "{user.validation.err.username}";
 
     Class<?>[] groups() default {};
