@@ -15,12 +15,13 @@
         <div class="border border-secondary p-3 rounded">
             <p>Access to Pet Clinic</p>
             <div>
-                <p th:each="err : ${#fields.errors('username')}" th:text="${err}" class="alert-danger"></p>
+                <p th:text="${#fields.hasErrors('username')}" th:errors="*{email}" class="alert-danger"></p>
                 <input type="text" th:name="username" class="form-control" placeholder="Username" required autofocus/>
             </div>
-            <p>
+            <div>
+                <div th:each="err : ${#fields.errors('password')}" th:text="${err}" class="alert-danger"></div>
                 <input type="password" th:name="password" class="form-control" placeholder="Password" required/>
-            </p>
+            </div>
             <p class="doctors-login" style="display: none">
                 <input type="password" th:name="secretDoctorsKey" class="form-control" placeholder="Doctor's secret"/>
             </p>

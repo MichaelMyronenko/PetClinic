@@ -16,7 +16,7 @@ public class IssueUpdateModel {
 
     public void updateEntity(Issue issue) {
         issue.setTitle(isNotBlank(title) ? title : issue.getTitle());
-        issue.setTitle(isNotBlank(description) ? description : issue.getDescription());
+        issue.setDescription(isNotBlank(description) ? description : issue.getDescription());
     }
 
     public IssueUpdateModel() {

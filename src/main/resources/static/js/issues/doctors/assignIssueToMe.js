@@ -1,9 +1,8 @@
 $(function () {
     $(`.opened-issues-list`).on('click', 'button.assign-issue-to-me', function () {
-        let parent = $(this).parents(".opened-issue-list-item");
+        let parent = $(this).parents('[class*="opened-issue-list-item"]');
         let issueId = parent.find(".hidden-issue-id").val();
         updateIssueRequest(issueId)
-
     });
 });
 

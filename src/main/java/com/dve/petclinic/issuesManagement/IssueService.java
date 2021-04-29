@@ -25,37 +25,41 @@ public class IssueService {
         this.issueReadingService = issueReadingService;
     }
 
-    public void createIssue(IssueCreationModel creationModel, AuthenticatedUser user) {
-        issueCreationService.create(creationModel, user);
+    public void createIssue(IssueCreationModel creationModel) {
+        issueCreationService.create(creationModel);
     }
 
-    public void editIssue(Long issueId, IssueUpdateModel updateModel, AuthenticatedUser user) {
-        issueUpdateService.edit(issueId, updateModel, user);
+    public void editIssue(Long issueId, IssueUpdateModel updateModel) {
+        issueUpdateService.edit(issueId, updateModel);
     }
 
-    public List<IssueResponseModel> findIssuesForOwner(AuthenticatedUser user) {
+    public IssueResponseModel getIssue(Long issueId) {
+        return issueReadingService.getIssue(issueId);
+    }
+
+    public List<IssueResponseModel> findIssuesForOwner() {
         int numOfPage = 0;
         int pageSize = 10;
 
-        return issueReadingService.findIssuesForOwner(PageRequest.of(numOfPage, pageSize), user);
+        return issueReadingService.findIssuesForOwner(PageRequest.of(numOfPage, pageSize));
     }
 
-    public List<IssueResponseModel> findIssuesForDoctor(AuthenticatedUser user) {
+    public List<IssueResponseModel> findIssuesForDoctor() {
         int numOfPage = 0;
         int pageSize = 10;
 
-        return issueReadingService.findIssuesForDoctor(PageRequest.of(numOfPage, pageSize), user);
+        return issueReadingService.findIssuesForDoctor(PageRequest.of(numOfPage, pageSize));
     }
 
-    public void assignIssueToMe(Long issueId, AuthenticatedUser user) {
-        issueUpdateService.assignToMe(issueId, user);
+    public void assignIssueToMe(Long issueId) {
+        issueUpdateService.assignToMe(issueId);
     }
 
     public void unAssignIssue(Long issueId, AuthenticatedUser user) {
-        issueUpdateService.unAssign(issueId, user);
+        issueUpdateService.unAssign(issueId);
     }
 
     public void closeIssue(Long issueId, AuthenticatedUser user) {
-        issueUpdateService.closeIssue(issueId, user);
+        issueUpdateService.closeIssue(issueId);
     }
 }
