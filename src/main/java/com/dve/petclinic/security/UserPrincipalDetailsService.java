@@ -1,7 +1,7 @@
 package com.dve.petclinic.security;
 
 import com.dve.petclinic.entities.user.UserRepository;
-import com.dve.petclinic.generalExceptions.InvalidCredentialsException;
+import com.dve.petclinic.generalExceptions.NotFoundException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -20,6 +20,8 @@ public class UserPrincipalDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository.findCommonUserByUsername(username)
                 .map(AuthenticatedUser::new)
-                .orElseThrow(() -> new InvalidCredentialsException("Bad credentials"));
+                .orElseThrow(() -> new NotFoundException("NotFound.userDetailsService.loadUser",
+                        "User not found with username ${username}, in UserPrincipalDetailsService.class",
+                        new Object[]{username}));
     }
 }
