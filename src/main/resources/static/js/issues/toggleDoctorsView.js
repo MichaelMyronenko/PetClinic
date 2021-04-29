@@ -4,13 +4,13 @@ $(function () {
         $(this).find("a.nav-link").addClass("active");
         switch ($(this).find(".type").val()) {
             case "doctors-view":
-                $(".issue-view").css('display', 'none');
-                $(".doctor-issue-view").css('display', 'block')
+                $(".issue-view").css('display', 'none').removeClass('opened');
+                $(".doctor-issue-view").css('display', 'block').addClass('opened');
                 getOpenedIssuesRequest();
                 break;
             case "owners-view":
-                $(".issue-view").css('display', 'none');
-                $(".owner-issue-view").css('display', 'block')
+                $(".issue-view").css('display', 'none').removeClass('opened');
+                $(".owner-issue-view").css('display', 'block').addClass('opened');
                 getMyIssues();
                 break;
         }

@@ -1,5 +1,9 @@
 package com.dve.petclinic.security.registration;
 
+import com.dve.petclinic.security.registration.constraints.Password;
+import com.dve.petclinic.security.registration.constraints.Username;
+import com.dve.petclinic.security.registration.constraints.ValidationOptions;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -11,16 +15,10 @@ public class CommonUserRegistrationModel {
     private String username;
 
     @NotBlank
-    @Size(min = 4, max = 18)
+    @Password(digits = ValidationOptions.REQUIRED)
     private String password;
 
     private String secretDoctorsKey;
-
-    public CommonUserRegistrationModel(String username, String password, String secretDoctorsKey) {
-        this.username = username;
-        this.password = password;
-        this.secretDoctorsKey = secretDoctorsKey;
-    }
 
     public CommonUserRegistrationModel() {
     }

@@ -1,4 +1,66 @@
-.opened-issues-list [class*="issue-list-item"]:hover {
+[class*="issue-list-item"]:hover {
     background-color: #e3e3e3;
     cursor: pointer;
+}
+
+.issue {
+    margin: 20px auto 0;
+    display: grid;
+    grid-template-areas:
+            "t t t t t m"
+            "ih ih ih ih ih ih"
+            "i i . . . ."
+            "i i . . . ."
+            "dh dh dh dh dh dh"
+            "d d d d d d"
+            "d d d d d d";
+
+    grid-gap: 5px 5px;
+    height: 50vh;
+    width: 90%;
+}
+
+.issue .title {
+    grid-area: t;
+}
+
+.issue .issue-id {
+    color: darkgray;
+}
+
+.issue .issue-details {
+    grid-area: i;
+}
+
+.issue .issue-description {
+    grid-area: d;
+    padding: 0 20px;
+}
+
+.issue .desc-head {
+    grid-area: dh;
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    grid-gap: 10px;
+    align-items: center;
+}
+
+.issue .det-head {
+    grid-area: ih;
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    grid-gap: 10px;
+    align-items: center;
+}
+
+.issue .manage-buttons {
+    grid-area: m;
+    display: flex;
+    justify-content: flex-end;
+    height: 50px;
+}
+
+.manage-buttons button {
+    display: block;
+    margin: 5px;
 }

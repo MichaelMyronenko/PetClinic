@@ -13,6 +13,8 @@ public class IssueResponseModelMapper {
                 .doctorId(entity.getAssignedTo() != null
                         ? entity.getAssignedTo().getId()
                         : null)
+                .petId(entity.getPet().getId())
+                .createdById(entity.getCreatedBy().getId())
                 .build();
     }
 }

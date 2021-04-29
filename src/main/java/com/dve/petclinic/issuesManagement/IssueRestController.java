@@ -1,10 +1,8 @@
 package com.dve.petclinic.issuesManagement;
 
 import com.dve.petclinic.issuesManagement.reading.IssueResponseModel;
-import com.dve.petclinic.security.AuthenticatedUser;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,15 +17,19 @@ public class IssueRestController {
         this.issueService = issueService;
     }
 
-    @GetMapping
-    public ResponseEntity<List<IssueResponseModel>> getIssues(@AuthenticationPrincipal AuthenticatedUser user) {
-        return new ResponseEntity<>(issueService.findIssuesForDoctor(user), HttpStatus.OK);
+    @GetMapping("/doctor")
+    public ResponseEntity<List<IssueResponseModel>> findIssuesForDoctor() {
+        return new ResponseEntity<>(issueService.findIssuesForDoctor(), HttpStatus.OK);
+    }
+
+    @GetMapping("/owner")
+    public ResponseEntity<List<IssueResponseModel>> findIssuesForOwner() {
+        return new ResponseEntity<>(issueService.findIssuesForOwner(), HttpStatus.OK);
     }
 
     @PutMapping("/{issueId}/assign")
-    public ResponseEntity<Void> assignIssue(@PathVariable Long issueId,
-                                            @AuthenticationPrincipal AuthenticatedUser user) {
-        issueService.assignIssueToMe(issueId, user);
+    public ResponseEntity<Void> assignIssue(@PathVariable Long issueId) {
+        issueService.assignIssueToMe(issueId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

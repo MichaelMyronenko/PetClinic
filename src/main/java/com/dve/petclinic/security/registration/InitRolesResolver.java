@@ -34,7 +34,9 @@ public class InitRolesResolver {
             roles.add(roleRepository.findByRoleName(ADMIN).orElseThrow());
             return roles;
         } else {
-            throw new InvalidCredentialsException("Invalid credentials!");
+            throw new InvalidCredentialsException("InvalidCredentials.initRoles.getRoles",
+                    "Registration failed due to invalid secret doctor's key '" + secretDoctorsKey + "'",
+                    null);
         }
     }
 }

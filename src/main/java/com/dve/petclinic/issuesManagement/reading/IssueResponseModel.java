@@ -17,6 +17,10 @@ public abstract class IssueResponseModel {
     @Nullable
     public abstract Long getDoctorId();
 
+    public abstract Long getCreatedById();
+
+    public abstract Long getPetId();
+
     public abstract IssueStatus getIssueStatus();
 
 

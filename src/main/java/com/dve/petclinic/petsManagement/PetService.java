@@ -28,8 +28,8 @@ public class PetService {
         this.petUpdateService = petUpdateService;
     }
 
-    public void addPet(PetCreationModel creationModel, AuthenticatedUser authenticatedUser) {
-        petCreationService.create(creationModel, authenticatedUser);
+    public void addPet(PetCreationModel creationModel) {
+        petCreationService.create(creationModel);
     }
 
     public List<PetResponseModel> getPets(AuthenticatedUser user) {
@@ -39,15 +39,15 @@ public class PetService {
         return petReadingService.findAllPetsByOwner(PageRequest.of(numOfPage, pageSize), user);
     }
 
-    public PetResponseModel getPet(Long petId, AuthenticatedUser user) {
-        return petReadingService.findPet(petId, user);
+    public PetResponseModel getPet(Long petId) {
+        return petReadingService.findPet(petId);
     }
 
-    public void deletePet(Long petId, AuthenticatedUser user) {
-        petDeleteService.delete(petId, user);
+    public void deletePet(Long petId) {
+        petDeleteService.delete(petId);
     }
 
-    public void updatePet(Long petId, AuthenticatedUser user, PetUpdateModel petUpdateModel) {
-        petUpdateService.update(petId, petUpdateModel, user);
+    public void updatePet(Long petId, PetUpdateModel petUpdateModel) {
+        petUpdateService.update(petId, petUpdateModel);
     }
 }
