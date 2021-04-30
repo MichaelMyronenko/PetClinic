@@ -6,12 +6,12 @@ $(function () {
             case "doctors-view":
                 $(".issue-view").css('display', 'none').removeClass('opened');
                 $(".doctor-issue-view").css('display', 'block').addClass('opened');
-                getOpenedIssuesRequest();
+                getOpenedIssuesRequest(0);
                 break;
             case "owners-view":
                 $(".issue-view").css('display', 'none').removeClass('opened');
                 $(".owner-issue-view").css('display', 'block').addClass('opened');
-                getMyIssues();
+                getMyIssues(0);
                 break;
         }
     });

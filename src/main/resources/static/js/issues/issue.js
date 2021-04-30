@@ -16,7 +16,7 @@ function setCreatedBy() {
 function setAssignedTo() {
     let assignedToId = $('.issue').find('.issue-assigned-to').children('input[type="hidden"]').val();
     $.ajax({
-        url: `/api/doctors/100`,
+        url: `/api/doctors/${assignedToId}`,
         dataType: "json",
         success: function (data) {
             $('.issue-assigned-to').append(

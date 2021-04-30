@@ -10,11 +10,9 @@ import com.dve.petclinic.issuesManagement.IssueFetcher;
 import com.dve.petclinic.ownersManagement.OwnerFetcher;
 import com.dve.petclinic.security.AuthenticatedUser;
 import com.dve.petclinic.security.CurrentUserService;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 import static com.dve.petclinic.entities.issue.IssueStatus.OPENED;
 import static com.dve.petclinic.entities.user.role.RoleName.DOCTOR;
@@ -40,22 +38,18 @@ public class IssueReadingService {
         this.doctorFetcher = doctorFetcher;
     }
 
-    public List<IssueResponseModel> findIssuesForOwner(Pageable pageable) {
+    public Page<IssueResponseModel> findIssuesForOwner(Pageable pageable) {
         AuthenticatedUser user = currentUserService.getCurrentUser();
         Owner owner = ownerFetcher.fetchOwnerByUserId(user.getUserId());
 
-        return issueRepository.findAllByCreatedBy(pageable, owner).stream()
-                .map(modelMapper::mapToModel)
-                .collect(Collectors.toList());
+        return issueRepository.findAllByCreatedBy(pageable, owner).map(modelMapper::mapToModel);
     }
 
-    public List<IssueResponseModel> findIssuesForDoctor(Pageable pageable) {
+    public Page<IssueResponseModel> findIssuesForDoctor(Pageable pageable) {
         AuthenticatedUser user = currentUserService.getCurrentUser();
         Doctor doctor = doctorFetcher.fetchDoctorByUserId(user.getUserId());
 
-        return issueRepository.findAllByAssignedToOrStatus(pageable, doctor, OPENED).stream()
-                .map(modelMapper::mapToModel)
-                .collect(Collectors.toList());
+        return issueRepository.findAllByAssignedToOrStatus(pageable, doctor, OPENED).map(modelMapper::mapToModel);
     }
 
     public IssueResponseModel getIssue(Long issueId) {

@@ -78,18 +78,28 @@
                     Create issue
                 </button>
             </div>
+            <p th:if="${#fields.hasErrors('global')}" th:errors="*{global}" class="text-danger"></p>
         </form>
     </div>
     <div class="my-issues-list col-10 mr-auto ml-auto">
         <ul class="list-group">
         </ul>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+            </ul>
+        </nav>
     </div>
 </div>
 
-<div sec:authorize="hasRole('ROLE_DOCTOR')" class="doctor-issue-view issue-view" style="display: none; margin-top: 80px">
+<div sec:authorize="hasRole('ROLE_DOCTOR')" class="doctor-issue-view issue-view"
+     style="display: none; margin-top: 80px">
     <div class="opened-issues-list col-10 mr-auto ml-auto">
         <ul class="list-group">
         </ul>
+        <nav class="mt-3" aria-label="Page navigation example">
+            <ul class="pagination d-flex justify-content-center">
+            </ul>
+        </nav>
     </div>
 </div>
 <script th:src="@{/webjars/jquery/3.6.0/jquery.min.js}"></script>
@@ -97,6 +107,7 @@
 <script th:src="@{/js/issues/toggleDoctorsView.js}"></script>
 <script th:src="@{/js/issues/doctors/getOpenedIssueList.js}"></script>
 <script th:src="@{/js/issues/doctors/assignIssueToMe.js}"></script>
+<script th:src="@{/js/issues/doctors/pagination.js}"></script>
 <script th:src="@{/js/issues/owners/getMyIssueList.js}"></script>
 <script th:src="@{/js/doctor/getDoctor.js}"></script>
 <script th:src="@{/js/issues/issuesPage.js}"></script>

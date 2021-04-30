@@ -1,6 +1,7 @@
 $(function () {
     if ($(".doctor-issue-view").hasClass('opened')) {
-        getOpenedIssuesRequest();
+        getOpenedIssuesRequest(0);
+        getPagination();
     }
 });
 
@@ -40,8 +41,10 @@ function assignedTo(issue) {
     }
 }
 
-function getOpenedIssuesRequest() {
-    $.get(`/api/issues/doctor`, function (data) {
-        openedIssueList($(`.opened-issues-list ul`), data);
+function getOpenedIssuesRequest(pageNum) {
+    $.get(`/api/issues/doctor`, {page: pageNum}, function (data) {
+        openedIssueList($(`.opened-issues-list ul`), data.content);
+        let content = getPaging(data.totalPages, data.number);
+        $('.opened-issues-list').find('.pagination').html(content);
     })
 }
