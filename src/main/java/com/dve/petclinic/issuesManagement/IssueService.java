@@ -7,10 +7,9 @@ import com.dve.petclinic.issuesManagement.reading.IssueResponseModel;
 import com.dve.petclinic.issuesManagement.update.IssueUpdateModel;
 import com.dve.petclinic.issuesManagement.update.IssueUpdateService;
 import com.dve.petclinic.security.AuthenticatedUser;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class IssueService {
@@ -37,18 +36,12 @@ public class IssueService {
         return issueReadingService.getIssue(issueId);
     }
 
-    public List<IssueResponseModel> findIssuesForOwner() {
-        int numOfPage = 0;
-        int pageSize = 10;
-
-        return issueReadingService.findIssuesForOwner(PageRequest.of(numOfPage, pageSize));
+    public Page<IssueResponseModel> findIssuesForOwner(Pageable pageable) {
+        return issueReadingService.findIssuesForOwner(pageable);
     }
 
-    public List<IssueResponseModel> findIssuesForDoctor() {
-        int numOfPage = 0;
-        int pageSize = 10;
-
-        return issueReadingService.findIssuesForDoctor(PageRequest.of(numOfPage, pageSize));
+    public Page<IssueResponseModel> findIssuesForDoctor(Pageable pageable) {
+        return issueReadingService.findIssuesForDoctor(pageable);
     }
 
     public void assignIssueToMe(Long issueId) {

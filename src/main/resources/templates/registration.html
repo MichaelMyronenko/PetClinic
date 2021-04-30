@@ -15,7 +15,7 @@
         <div class="border border-secondary p-3 rounded">
             <p>Access to Pet Clinic</p>
             <div>
-                <p th:text="${#fields.hasErrors('username')}" th:errors="*{email}" class="alert-danger"></p>
+                <p th:text="${#fields.hasErrors('username')}" th:errors="*{username}" class="alert-danger"></p>
                 <input type="text" th:name="username" class="form-control" placeholder="Username" required autofocus/>
             </div>
             <div>

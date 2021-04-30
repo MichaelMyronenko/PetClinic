@@ -5,7 +5,6 @@ import com.dve.petclinic.entities.issue.IssueRepository;
 import com.dve.petclinic.entities.issue.IssueStatus;
 import com.dve.petclinic.entities.owner.Owner;
 import com.dve.petclinic.entities.pet.Pet;
-import com.dve.petclinic.generalExceptions.ForbiddenException;
 import com.dve.petclinic.ownersManagement.OwnerFetcher;
 import com.dve.petclinic.petsManagement.PetFetcher;
 import com.dve.petclinic.security.AuthenticatedUser;
@@ -35,17 +34,7 @@ public class IssueCreationService {
 
         issue.setCreatedBy(owner);
         issue.setStatus(IssueStatus.OPENED);
-
-        if (!(issue.getCreatedBy().equals(pet.getOwner()))) {
-            throw new ForbiddenException("Forbidden.UserCreationService.create",
-                    "Forbidden due to an attempt to connect the new issue to the pet " +
-                            "that does not belong to the current user, username: " + user.getUsername(),
-                    null);
-        }
-
         issue.setPet(pet);
         issueRepository.save(issue);
     }
-
-
 }
