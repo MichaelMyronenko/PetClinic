@@ -28,7 +28,8 @@ public class PetReadingService {
         this.currentUserService = currentUserService;
     }
 
-    public List<PetResponseModel> findAllPetsByOwner(Pageable pageable, AuthenticatedUser user) {
+    public List<PetResponseModel> findAllPetsByOwner(Pageable pageable) {
+        AuthenticatedUser user = currentUserService.getCurrentUser();
         Owner owner = ownerFetcher.fetchOwnerByUserId(user.getUserId());
 
         return petRepository.findAllByOwner(pageable, owner).stream()

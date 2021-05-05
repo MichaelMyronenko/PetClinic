@@ -2,7 +2,8 @@ package com.dve.petclinic.petsManagement;
 
 import com.dve.petclinic.petsManagement.creation.PetCreationModel;
 import com.dve.petclinic.petsManagement.update.PetUpdateModel;
-import com.dve.petclinic.security.CurrentUserService;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,22 +15,19 @@ import javax.validation.Valid;
 public class PetController {
 
     private final PetService petService;
-    private final CurrentUserService currentUserService;
 
-    public PetController(PetService petService, CurrentUserService currentUserService) {
+    public PetController(PetService petService) {
         this.petService = petService;
-        this.currentUserService = currentUserService;
     }
 
     @GetMapping
-    public String pet(Model model) {
-        model.addAttribute("petList", petService.getPets(currentUserService.getCurrentUser()));
+    public String pet(@PageableDefault Pageable pageable, Model model) {
+        model.addAttribute("petList", petService.getPets(pageable));
         return "pets";
     }
 
     @PostMapping
-    public String addPet(@Valid @ModelAttribute PetCreationModel petCreationModel,
-                         Model model) {
+    public String addPet(@Valid @ModelAttribute PetCreationModel petCreationModel) {
         petService.addPet(petCreationModel);
         return "redirect:/pets";
     }
