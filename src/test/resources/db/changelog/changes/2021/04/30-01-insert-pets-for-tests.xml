@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet author="mykhailo" id="add-user-table">
+        <insert tableName="users">
+            <column name="username" value="testUser"/>
+            <column name="password" value="someTestPassword"/>
+        </insert>
+
+        <insert tableName="owners">
+            <column name="user_id" value="1"/>
+        </insert>
+
+        <insert tableName="pets">
+            <column name="name" value="testTuzik1"/>
+            <column name="owner_id" value="1"/>
+        </insert>
+
+        <insert tableName="pets">
+            <column name="name" value="testTuzik2"/>
+            <column name="owner_id" value="1"/>
+        </insert>
+
+        <insert tableName="pets">
+            <column name="name" value="testTuzik3"/>
+            <column name="owner_id" value="1"/>
+        </insert>
+
+        <insert tableName="pets">
+            <column name="name" value="testTuzik4"/>
+            <column name="owner_id" value="1"/>
+        </insert>
+
+        <insert tableName="pets">
+            <column name="name" value="testTuzik5"/>
+            <column name="owner_id" value="1"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

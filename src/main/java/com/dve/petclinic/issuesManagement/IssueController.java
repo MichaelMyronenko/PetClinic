@@ -44,7 +44,7 @@ public class IssueController {
     public String issues(@AuthenticationPrincipal AuthenticatedUser user,
                          @PageableDefault Pageable pageable,
                          Model model) {
-        model.addAttribute("petList", petService.getPets(user));
+        model.addAttribute("petList", petService.getPets(pageable));
         model.addAttribute("issueCreationForm", new IssueCreationModel());
 
         if (user.hasRole(OWNER)) {

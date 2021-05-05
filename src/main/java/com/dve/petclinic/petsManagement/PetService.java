@@ -9,6 +9,7 @@ import com.dve.petclinic.petsManagement.update.PetUpdateModel;
 import com.dve.petclinic.petsManagement.update.PetUpdateService;
 import com.dve.petclinic.security.AuthenticatedUser;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,11 +33,8 @@ public class PetService {
         petCreationService.create(creationModel);
     }
 
-    public List<PetResponseModel> getPets(AuthenticatedUser user) {
-        int numOfPage = 0;
-        int pageSize = 8;
-
-        return petReadingService.findAllPetsByOwner(PageRequest.of(numOfPage, pageSize), user);
+    public List<PetResponseModel> getPets(Pageable pageable) {
+        return petReadingService.findAllPetsByOwner(pageable);
     }
 
     public PetResponseModel getPet(Long petId) {

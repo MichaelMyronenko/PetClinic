@@ -39,7 +39,16 @@ public class CommonRole implements GrantedAuthority {
         return Objects.hash(id);
     }
 
+    public CommonRole(Long id, RoleName roleName) {
+        this.id = id;
+        this.roleName = roleName;
+    }
+
     public CommonRole() {
+    }
+
+    public CommonRole(RoleName roleName) {
+        this.roleName = roleName;
     }
 
     public CommonRole(Long id, RoleName roleName, Set<CommonUser> users) {

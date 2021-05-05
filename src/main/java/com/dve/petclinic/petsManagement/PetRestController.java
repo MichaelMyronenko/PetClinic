@@ -2,7 +2,8 @@ package com.dve.petclinic.petsManagement;
 
 import com.dve.petclinic.petsManagement.reading.PetResponseModel;
 import com.dve.petclinic.petsManagement.update.PetUpdateModel;
-import com.dve.petclinic.security.CurrentUserService;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,16 +16,14 @@ import java.util.List;
 public class PetRestController {
 
     private final PetService petService;
-    private final CurrentUserService currentUserService;
 
-    public PetRestController(PetService petService, CurrentUserService currentUserService) {
+    public PetRestController(PetService petService) {
         this.petService = petService;
-        this.currentUserService = currentUserService;
     }
 
     @GetMapping
-    public ResponseEntity<List<PetResponseModel>> getPets() {
-        return new ResponseEntity<>(petService.getPets(currentUserService.getCurrentUser()), HttpStatus.OK);
+    public ResponseEntity<List<PetResponseModel>> getPets(@PageableDefault Pageable pageable) {
+        return new ResponseEntity<>(petService.getPets(pageable), HttpStatus.OK);
     }
 
     @GetMapping("/{petId}")
