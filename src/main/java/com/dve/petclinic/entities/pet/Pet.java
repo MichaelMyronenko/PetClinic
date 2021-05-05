@@ -21,6 +21,11 @@ public class Pet {
     public Pet() {
     }
 
+    public Pet(String name, Owner owner) {
+        this.name = name;
+        this.owner = owner;
+    }
+
     public Pet(Long id, String name, Owner owner) {
         this.id = id;
         this.name = name;

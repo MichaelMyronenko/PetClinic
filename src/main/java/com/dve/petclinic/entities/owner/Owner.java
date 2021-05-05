@@ -35,6 +35,11 @@ public class Owner {
     public Owner() {
     }
 
+    public Owner(String phoneNumber, CommonUser user) {
+        this.phoneNumber = phoneNumber;
+        this.user = user;
+    }
+
     public Owner(CommonUser user) {
         this.user = user;
     }
